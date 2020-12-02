@@ -1,0 +1,8 @@
+<div class="header">
+    <div class="header-items">
+        <div class="logged-item">{{firstName}} {{lastName}}</div>
+        <div class="logged-item" ng-controller='logoutCtrl'  ng-if='loggedIn'>
+            <button ng-click='logout()'>Logout</button>
+        </div>
+    </div>
+</div>

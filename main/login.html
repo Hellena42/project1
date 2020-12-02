@@ -1,0 +1,14 @@
+<div ng-controller='loginCtrl'>
+    <form action="" ng-submit='loginSubmit()'>
+        <div class="form-row">
+            <label for='firstname'>Firstname</label>
+            <input type="text" id="firstname" ng-model="firstname" required>
+        </div>
+        <div class="form-row">
+            <label for='lastname'>Lastname</label>
+            <input type="text" id="lastname" ng-model="lastname" required>
+        </div>
+        <button type="submit" class="btn-login">Login</button>
+        <span class="login-error" >{{error}}</span>
+    </form>
+</div>

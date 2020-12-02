@@ -1,0 +1,84 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: flex-end;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    min-height: 50px;
+    padding: 10px 0;
+    box-sizing: border-box;
+    background-color: #352323;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.form-row input, .btn-login {
+    padding: 5px;
+}
+
+.btn-login {
+    min-height: 45px;
+    background-color: olivedrab;
+    border: none;
+}
+
+.login-error {
+    margin-top: 10px;
+    color: red;
+}
+
+.logged-item {
+    padding-right: 15px;
+    color: orangered;
+}
+
+.header-items {
+    display: flex;
+}
+
+.header-link {
+    color: orangered;
+}
+
+main {
+    margin-top: 60px;
+    padding: 0 15px;
+}
+
+.wrapper {
+width: 900px;
+margin: 0 auto;
+display: flex;
+justify-content: center;
+}
+
+.btn {
+    padding: 20px;
+    margin-top: 35px;
+    color: #000;
+    text-decoration: none;
+    text-align: center;
+    background-color: #da5858;
+    border-radius: 3px;;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+  }
