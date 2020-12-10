@@ -14,14 +14,14 @@ app.config(function($routeProvider) {
                 }
             }
         },
-        templateUrl: 'home.html'
+        templateUrl: 'inner-pages/home.html'
     })
     .when('/hobbies', {
-        templateUrl: 'hobbies.html',
+        templateUrl: 'inner-pages/hobbies.html',
         controller: 'hobbiesCtrl'
     })
     .when('/hobbies/:hobbyId', {
-        templateUrl: 'hobby.html',
+        templateUrl: 'inner-pages/hobby.html',
         controller: 'hobbyCtrl'
     })
     .otherwise({
@@ -34,8 +34,6 @@ app.directive('mainHeader', function() {
         templateUrl: 'main/header.html'
     }
 });
-
-
 
 app.controller('loginCtrl', function($scope, $rootScope, $location, loginService) {
     $scope.loginSubmit = function() {
@@ -88,9 +86,31 @@ app.controller('hobbyCtrl', function($scope, $routeParams, $rootScope, hobbyServ
 });
 
 app.controller('hobbiesCtrl', function ($scope, hobbyService) {
-    $scope.hobbyService = hobbyService.myHobbies;
     $scope.myHobbies = hobbyService.myHobbies;
     $scope.myHobbies.sort((a, b) => a.title.localeCompare(b.title));
+    $scope.resetHobbies = function() {
+        $scope.addedName = '';
+        $scope.addedDescription = '';
+        $scope.addedAchievement = '';
+    };
+    
+    $scope.addHobby = function() {      
+        if (!$scope.addedName || !$scope.addedDescription || !$scope.addedAchievement) {
+            $scope.error = 'Please enter valid info'
+            return;
+        }
+
+        $scope.myHobbies.push({
+            id: $scope.myHobbies.length + 1,
+            title: $scope.addedName,
+            description: $scope.addedDescription,
+            achievement: $scope.addedAchievement
+        });
+        $scope.resetHobbies();
+    };
+    $scope.removeHobby = function(delData) {
+        $scope.myHobbies.splice($scope.myHobbies.indexOf(delData), 1);
+    };
 });
 
 app.factory('hobbyService', function() {        

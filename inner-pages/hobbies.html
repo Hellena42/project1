@@ -1,0 +1,60 @@
+<div class="hobby-wrapper">
+    <a href="#!home">Home</a>
+    <div class="hobbies-list" ng-controller='hobbiesCtrl'>
+      <div class="search">
+        <input type="text" placeholder="search hobbies" ng-model='searchData' ng-minlength='2'>
+      </div>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope='col'>№</th>
+              <th scope='col'>Name</th>
+              <th scope='col'>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat='hobby in myHobbies | filter: searchData'>
+              <td>{{$index + 1}}</td>
+              <td><a href="#!hobbies/{{hobby.id}}">{{hobby.title}}</a></td>
+              <td><button type="button" class="btn btn-danger" ng-click='removeHobby()'>Delete hobby</button></td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+    <button type="button" class="btn btn-primary btn-create-hobby" data-toggle="modal" data-target="#md-create-hobby">
+    Create hobby
+  </button>
+  <div class="modal fade" id="md-create-hobby" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New hobby</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="" ng-submit='addHobby()'>
+            <div class="modal-items">
+              <label for="input-hobby">Name</label>
+              <input id='input-hobby' type="text" placeholder="add hobby" ng-model='addedName' required>
+            </div>
+            <div class="modal-items">
+              <label for="input-description">Description</label>
+              <input id='input-description' type="text" placeholder="add description" ng-model='addedDescription' required>
+            </div>
+            <div class="modal-items">
+              <label for="input-achievement">Achievement</label>
+              <input id='input-achievement' type="text" placeholder="add achievement" ng-model='addedAchievement' required>
+            </div>
+            <span class="login-error" >{{error}}</span>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" ng-click='resetHobbies()'>Reset</button>
+              <button type="submit" id='btn-save' class="btn btn-primary" ng-click='addHobby()' data-dismiss="modal">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
